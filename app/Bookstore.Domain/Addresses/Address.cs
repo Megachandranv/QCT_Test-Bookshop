@@ -1,0 +1,39 @@
+using Bookstore.Domain.Customers;
+
+namespace Bookstore.Domain.Addresses
+{
+    public class Address : Entity
+    {
+        // An empty constructor is required by EF Core
+        private Address() { }
+
+        public Address(Customer customer, string addressLine1, string? addressLine2, string city, string state, string country, string zipCode)
+        {
+            Customer = customer;
+            AddressLine1 = addressLine1;
+            AddressLine2 = addressLine2;
+            CustomerId = customer.Id;
+            City = city;
+            State = state;
+            Country = country;
+            ZipCode = zipCode;
+        }
+
+        public string AddressLine1 { get; set; } = null!;
+
+        public string? AddressLine2 { get; set; }
+
+        public string City { get; set; } = null!;
+
+        public string State { get; set; } = null!;
+
+        public string Country { get; set; } = null!;
+
+        public string ZipCode { get; set; } = null!;
+
+        public int CustomerId { get; set; }
+        public Customer Customer { get; set; } = null!;
+
+        public bool IsActive { get; set; } = true;
+    }
+}
